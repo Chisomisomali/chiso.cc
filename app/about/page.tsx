@@ -157,7 +157,7 @@ export default function AboutPage() {
                     <h3 className="text-lg font-semibold text-foreground">Specialized Skills Development</h3>
                     <p className="text-muted-foreground">
                       Advanced training in virtualization technologies (Proxmox, VMware), containerization, IT
-                      automation with Ansible, and cloud platform management. Specialized knowledge in GIS applications
+                      automation with Ansible, n8n and cloud platform management. Specialized knowledge in GIS applications
                       and radio communication systems.
                     </p>
                   </div>
