@@ -76,7 +76,7 @@ export default function HomePage() {
                   size="lg"
                   className="text-lg px-8 bg-white/20 dark:bg-white/5 backdrop-blur-sm border-white/30 dark:border-white/10 hover:bg-white/30 dark:hover:bg-white/10"
                 >
-                  <Link href="/contact">Get In Touch</Link>
+                  <Link href="/contact">Get In Touch </Link>
                 </Button>
               </div>
             </div>
