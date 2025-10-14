@@ -8,6 +8,11 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Chisomo Misomali - Home",
   description: "Professional portfolio of Chisomo Misomali - Expert in Fiber Optics, Networking & Linux Administration",
+  icons: {
+        icon: 'favicon.ico', // Path to your icon in the public directory
+        apple: '/apple-icon.png', // Path to your Apple touch icon
+      },
+    };
 }
 
 export default function HomePage() {
