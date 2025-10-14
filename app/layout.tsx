@@ -9,7 +9,7 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Chisomo Misomali | Fiber Optics & Networking Specialist",
   description:
-    "IT Professional, expertise in fiber optics, Linux administration,IoT and Electronics, networking, and telecommunications systems.",
+    "IT Professional, expertise in fiber optics, Linux administration, IoT and Electronics, networking, and telecommunications systems.",
   keywords: [
     "Chisomo Misomali",
     "fiber optics",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chisomo Misomali | Fiber Optics, Networking Specialist, Linux Sys Admin, Docker, Robotics",
     description:
-      "IT Professional, expertise in fiber optics, Linux administration,IoT and Electronics, networking, and telecommunications systems.",
+      "IT Professional, expertise in fiber optics, Linux administration, IoT and Electronics, networking, and telecommunications systems.",
     url: "https://chisomo-misomali.vercel.app",
     siteName: "Chisomo Misomali Portfolio",
     locale: "en_US",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Chisomo Misomali | Fiber Optics & Networking Specialist",
     description:
-      "Professional portfolio showcasing expertise in fiber optics, Linux administration, networking, and telecommunications systems.",
+      "IT Professional, expertise in fiber optics, Linux administration, IoT and Electronics, networking, and telecommunications systems.",
     images: ["/og-image.jpg"],
   },
   robots: {

@@ -95,8 +95,8 @@ export default function HomePage() {
                 alt="Data center with server infrastructure"
                 className="w-full h-64 object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent flex items-end">
-                <div className="bg-black/90 w-full">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent flex items-end">
+                <div className="backdrop-blur-md bg-black/40 border-t border-white/20 w-full">
                   <p className="text-white font-semibold p-4 drop-shadow-lg">Data Center Infrastructure</p>
                 </div>
               </div>
@@ -107,8 +107,8 @@ export default function HomePage() {
                 alt="Fiber optic cables and splicing equipment"
                 className="w-full h-64 object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent flex items-end">
-                <div className="bg-black/90 w-full">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent flex items-end">
+                <div className="backdrop-blur-md bg-black/40 border-t border-white/20 w-full">
                   <p className="text-white font-semibold p-4 drop-shadow-lg">Fiber Optic Systems</p>
                 </div>
               </div>
@@ -119,8 +119,8 @@ export default function HomePage() {
                 alt="Telecommunications tower with radio equipment"
                 className="w-full h-64 object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent flex items-end">
-                <div className="bg-black/90 w-full">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent flex items-end">
+                <div className="backdrop-blur-md bg-black/40 border-t border-white/20 w-full">
                   <p className="text-white font-semibold p-4 drop-shadow-lg">Radio & Tower Systems</p>
                 </div>
               </div>
