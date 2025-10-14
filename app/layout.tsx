@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Chisomo Misomali | Fiber Optics & Networking Specialist",
   description:
     "IT Professional, expertise in fiber optics, Linux administration, IoT and Electronics, networking, and telecommunications systems.",
+  icon: "/favicon.ico",  
   keywords: [
     "Chisomo Misomali",
     "fiber optics",
