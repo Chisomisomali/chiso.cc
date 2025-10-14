@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Chisomo Misomali - Home",
   description:
     "IT Professional, expertise in fiber optics, Linux administration, IoT and Electronics, networking, and telecommunications systems.",
+  icon: "favicon.ico",  
 }
 
 export default function HomePage() {
