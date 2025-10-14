@@ -7,10 +7,10 @@ import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Chisomo Misomali - Home",
-  description: "Professional portfolio of Chisomo Misomali - Expert in Fiber Optics, Networking & Linux Administration",
+  description: "IT Proffesional, expert in Fiber Optics,LoRa Technology, Radio Communication Systems, IoT and Robotics, Networking & Linux Administration",
   icons: {
-        icon: 'favicon.ico', // Path to your icon in the public directory
-        apple: '/apple-icon.png', // Path to your Apple touch icon
+        icon: 'favicon(4).ico', // Path to your icon in the public directory
+        apple: 'favicon(4).ico', // Path to your Apple touch icon
       },
     };
 }
