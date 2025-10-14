@@ -95,7 +95,7 @@ export default function HomePage() {
                 alt="Data center with server infrastructure"
                 className="w-full h-64 object-cover"
               />
-              <div className="absolute inset-0 backdrop-blur-[2px] flex items-end">
+              <div className="absolute inset-0 flex items-end">
                 <div className="backdrop-blur-xl bg-white/30 dark:bg-slate-900/30 border-t border-white/40 dark:border-white/20 w-full shadow-lg">
                   <p className="text-foreground font-semibold p-4 drop-shadow-lg">Data Center Infrastructure</p>
                 </div>
@@ -107,7 +107,7 @@ export default function HomePage() {
                 alt="Fiber optic cables and splicing equipment"
                 className="w-full h-64 object-cover"
               />
-              <div className="absolute inset-0 backdrop-blur-[2px] flex items-end">
+              <div className="absolute inset-0 flex items-end">
                 <div className="backdrop-blur-xl bg-white/30 dark:bg-slate-900/30 border-t border-white/40 dark:border-white/20 w-full shadow-lg">
                   <p className="text-foreground font-semibold p-4 drop-shadow-lg">Fiber Optic Systems</p>
                 </div>
@@ -119,7 +119,7 @@ export default function HomePage() {
                 alt="Telecommunications tower with radio equipment"
                 className="w-full h-64 object-cover"
               />
-              <div className="absolute inset-0 backdrop-blur-[2px] flex items-end">
+              <div className="absolute inset-0 flex items-end">
                 <div className="backdrop-blur-xl bg-white/30 dark:bg-slate-900/30 border-t border-white/40 dark:border-white/20 w-full shadow-lg">
                   <p className="text-foreground font-semibold p-4 drop-shadow-lg">Radio & Tower Systems</p>
                 </div>
