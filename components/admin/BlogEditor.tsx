@@ -71,7 +71,6 @@ export default function BlogEditor({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    console.log("[v0] Starting image upload:", file.name, file.type, file.size);
     setUploading(true);
     try {
       const formData = new FormData();
@@ -82,19 +81,15 @@ export default function BlogEditor({
         body: formData,
       });
 
-      console.log("[v0] Upload response status:", response.status);
-
       if (!response.ok) {
         const errorData = await response.json();
-        console.log("[v0] Upload error response:", errorData);
         throw new Error(errorData.error || 'Upload failed');
       }
 
       const data = await response.json();
-      console.log("[v0] Upload success, image URL set");
       setImage(data.url);
     } catch (error) {
-      console.error("[v0] Upload error:", error);
+      console.error('Upload error:', error);
       alert(`Failed to upload image: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setUploading(false);

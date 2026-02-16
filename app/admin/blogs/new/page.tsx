@@ -21,6 +21,8 @@ export default function NewBlogPage() {
   }) => {
     setIsLoading(true);
     try {
+      console.log("[v0] Saving new blog with data:", data);
+      
       const newBlog = {
         id: Date.now().toString(),
         ...data,
@@ -28,8 +30,16 @@ export default function NewBlogPage() {
         readTime: calculateReadTime(data.content),
       };
 
-      const allBlogs = await fetch('/api/blogs').then(r => r.json()).then(d => d.blogs || []);
+      console.log("[v0] Created blog object:", newBlog);
+
+      const fetchResponse = await fetch('/api/blogs');
+      const allBlogsData = await fetchResponse.json();
+      const allBlogs = allBlogsData.blogs || [];
+      
+      console.log("[v0] Fetched existing blogs, count:", allBlogs.length);
+
       const updatedBlogs = [...allBlogs, newBlog];
+      console.log("[v0] Updated blogs array, new count:", updatedBlogs.length);
 
       const response = await fetch('/api/blogs', {
         method: 'POST',
@@ -39,12 +49,22 @@ export default function NewBlogPage() {
         body: JSON.stringify({ blogs: updatedBlogs }),
       });
 
-      if (!response.ok) throw new Error('Failed to save blog');
+      console.log("[v0] Save response status:", response.status);
 
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("[v0] Save error response:", errorText);
+        throw new Error('Failed to save blog');
+      }
+
+      const saveResult = await response.json();
+      console.log("[v0] Save successful:", saveResult);
+
+      alert('Blog published successfully!');
       router.push('/admin/blogs');
     } catch (error) {
-      console.error('Error saving blog:', error);
-      alert('Failed to save blog');
+      console.error("[v0] Error saving blog:", error);
+      alert(`Failed to save blog: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setIsLoading(false);
     }
