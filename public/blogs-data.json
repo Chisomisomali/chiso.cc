@@ -1,0 +1,24 @@
+{
+  "blogs": [
+    {
+      "id": "home-labbing-journey",
+      "title": "My Home Labbing Journey: From Zima OS to TrueNAS & Proxmox",
+      "excerpt": "A year and two months of evolution in home infrastructure, from simple file hosting to a sophisticated 3TB TrueNAS setup with Proxmox virtualization for web servers.",
+      "content": "<h2>The Beginning: Zima OS Era</h2><p>When I first started my home labbing journey about 14 months ago, I was working with Zima OS, a simple and elegant operating system for file storage and management. It served my needs well initially, allowing me to host files and experiment with basic server configurations from my home setup.</p><h2>The Evolution: Growing Infrastructure</h2><p>As my ambitions grew and my understanding of networking and server architecture deepened, I realized I needed a more powerful and flexible solution. This led me to my current setup:</p><h3>TrueNAS - The Storage Powerhouse</h3><p>I upgraded to a 3TB TrueNAS system, which provided me with enterprise-grade storage capabilities, advanced RAID configurations, and robust data protection features. TrueNAS became the backbone of my home infrastructure, ensuring data integrity and performance.</p><h3>Proxmox - The Virtualization Layer</h3><p>With Proxmox, I gained the ability to run multiple virtual machines on a single physical host. This opened up incredible possibilities for experimenting with different operating systems and web server configurations without needing multiple physical machines.</p><h2>Current Setup</h2><p>Today, my home lab consists of:</p><ul><li>3TB TrueNAS for centralized storage with RAID protection</li><li>Proxmox hypervisor running multiple VMs for various web servers</li><li>Linux-based VMs serving different applications and services</li><li>Complete network isolation and testing capabilities</li></ul><h2>Lessons Learned</h2><p>This journey has taught me invaluable lessons about:</p><ul><li>Infrastructure scaling and planning</li><li>Virtualization and containerization</li><li>Storage management and data protection</li><li>System administration and networking</li></ul><p>The progression from Zima OS to my current TrueNAS and Proxmox setup has been transformational. It's not just about having more powerful tools—it's about understanding how systems work together and building a solid foundation for future learning.</p>",
+      "category": "Home Lab",
+      "date": "2025-01-15T10:00:00Z",
+      "image": "/modern-data-center-with-server-racks-and-fiber-opt.png",
+      "readTime": 8
+    },
+    {
+      "id": "cloud-champion-birthday",
+      "title": "Cloud Champion Birthday: Celebrating the Journey to the Cloud",
+      "excerpt": "This year's birthday theme celebrates becoming a Cloud Champion. Join me as I reflect on the journey, growth, and the song that accompanies this milestone.",
+      "content": "<h2>Cloud Champion: A Birthday Theme</h2><p>This year, I've decided to celebrate my birthday with a special theme: <strong>Cloud Champion</strong>. It's not just a fun title—it represents a significant milestone in my professional and personal growth.</p><h2>What Does It Mean to Be a Cloud Champion?</h2><p>Being a Cloud Champion means embracing the cloud-first philosophy, understanding distributed systems, and confidently navigating the complexities of modern infrastructure. It's about innovation, resilience, and the continuous pursuit of excellence.</p><h2>The Journey So Far</h2><p>Over the past years, I've transitioned from traditional on-premise systems to embracing cloud technologies. This journey includes:</p><ul><li>Learning cloud platforms and services</li><li>Understanding microservices and containerization</li><li>Implementing scalable and reliable systems</li><li>Mentoring others in cloud adoption</li></ul><h2>Celebration Through Music</h2><p>Every celebration deserves its soundtrack. For this milestone, I've chosen <strong>'Broken Love' by Niwel</strong>—a beautiful piece that resonates with themes of resilience, hope, and transformation. Just as the song flows with emotion, this journey has been filled with ups and downs, learning moments, and victories.</p><p><em>\"Sometimes what seems broken can lead to something more beautiful...\"</em> - A sentiment that perfectly captures the growth journey in technology and life.</p><h2>Looking Forward</h2><p>As I step into this new year as a Cloud Champion, I'm excited about:</p><ul><li>Exploring advanced cloud architectures</li><li>Contributing to open-source cloud projects</li><li>Helping others navigate their cloud journey</li><li>Continuing to innovate and learn</li></ul><p>Thank you to everyone who has supported me on this journey. Here's to more challenges, more growth, and more victories in the cloud!</p>",
+      "category": "Personal",
+      "date": "2025-01-20T15:30:00Z",
+      "image": "/telecommunications-tower-with-antennas-and-radio-e.png",
+      "readTime": 5
+    }
+  ]
+}

@@ -1,33 +1,36 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Navigation } from '@/components/navigation'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight } from 'lucide-react'
+import { BlogPost } from '@/lib/blogs'
 
 export default function BlogPage() {
-  const blogPosts = [
-    {
-      id: 'home-labbing-journey',
-      title: 'My Home Labbing Journey: From Zima OS to TrueNAS & Proxmox',
-      excerpt: 'A year and two months of evolution in home infrastructure, from simple file hosting to a sophisticated 3TB TrueNAS setup with Proxmox virtualization for web servers.',
-      date: 'January 2025',
-      category: 'Home Lab',
-      readTime: '8 min read',
-      image: '/modern-data-center-with-server-racks-and-fiber-opt.png',
-    },
-    {
-      id: 'cloud-champion-birthday',
-      title: 'Cloud Champion Birthday: Celebrating the Journey to the Cloud',
-      excerpt: 'This year\'s birthday theme celebrates becoming a Cloud Champion. Join me as I reflect on the journey, growth, and the song that accompanies this milestone.',
-      date: 'Birthday Reflection 2025',
-      category: 'Personal',
-      readTime: '5 min read',
-      image: '/telecommunications-tower-with-antennas-and-radio-e.png',
-    },
-  ]
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const loadBlogs = async () => {
+      try {
+        const response = await fetch('/api/blogs')
+        const data = await response.json()
+        const sortedBlogs = (data.blogs || []).sort(
+          (a: BlogPost, b: BlogPost) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        )
+        setBlogPosts(sortedBlogs)
+      } catch (error) {
+        console.error('Failed to load blogs:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadBlogs()
+  }, [])
 
   return (
     <main className="min-h-screen bg-background">
@@ -47,43 +50,57 @@ export default function BlogPage() {
 
           {/* Blog Posts Grid */}
           <div className="grid md:grid-cols-2 gap-6">
-            {blogPosts.map((post) => (
-              <Link key={post.id} href={`/blog/${post.id}`}>
-                <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full cursor-pointer backdrop-blur-sm bg-white/20 dark:bg-white/5 border border-white/30 dark:border-white/10 hover:border-primary/50">
-                  {/* Image */}
-                  <div className="relative w-full h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
-                        {post.category}
-                      </Badge>
-                      <span className="text-sm text-muted-foreground">{post.readTime}</span>
+            {loading ? (
+              <div className="col-span-2 text-center py-12">
+                <p className="text-muted-foreground">Loading blogs...</p>
+              </div>
+            ) : blogPosts.length === 0 ? (
+              <div className="col-span-2 text-center py-12">
+                <p className="text-muted-foreground">No blogs published yet.</p>
+              </div>
+            ) : (
+              blogPosts.map((post) => (
+                <Link key={post.id} href={`/blog/${post.id}`}>
+                  <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 h-full cursor-pointer backdrop-blur-sm bg-white/20 dark:bg-white/5 border border-white/30 dark:border-white/10 hover:border-primary/50">
+                    {/* Image */}
+                    <div className="relative w-full h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
+                      {post.image && (
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      )}
                     </div>
 
-                    <h2 className="text-xl font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
-                      {post.title}
-                    </h2>
+                    {/* Content */}
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
+                          {post.category}
+                        </Badge>
+                        <span className="text-sm text-muted-foreground">{post.readTime} min read</span>
+                      </div>
 
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                      {post.excerpt}
-                    </p>
+                      <h2 className="text-xl font-semibold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                        {post.title}
+                      </h2>
 
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">{post.date}</span>
-                      <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" />
+                      <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-muted-foreground">
+                          {new Date(post.date).toLocaleDateString()}
+                        </span>
+                        <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
-                  </div>
-                </Card>
-              </Link>
-            ))}
+                  </Card>
+                </Link>
+              ))
+            )}
           </div>
 
           {/* Call to Action */}
