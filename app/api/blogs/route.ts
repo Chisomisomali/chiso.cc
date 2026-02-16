@@ -26,14 +26,6 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  // Check admin password
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  const authHeader = request.headers.get('authorization');
-  
-  if (!adminPassword || authHeader !== `Bearer ${adminPassword}`) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
-
   try {
     ensureBlogsFile();
     const body = await request.json();
@@ -42,5 +34,22 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error writing blogs:', error);
     return NextResponse.json({ error: 'Failed to save blogs' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    ensureBlogsFile();
+    const body = await request.json();
+    const { id } = body;
+
+    const data = JSON.parse(fs.readFileSync(BLOGS_FILE, 'utf-8'));
+    data.blogs = data.blogs.filter((blog: any) => blog.id !== id);
+    fs.writeFileSync(BLOGS_FILE, JSON.stringify(data, null, 2));
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Error deleting blog:', error);
+    return NextResponse.json({ error: 'Failed to delete blog' }, { status: 500 });
   }
 }

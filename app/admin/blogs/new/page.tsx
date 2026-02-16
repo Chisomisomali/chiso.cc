@@ -1,23 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAdminAuth } from '@/hooks/useAdminAuth';
 import BlogEditor from '@/components/admin/BlogEditor';
-import { createBlog, calculateReadTime } from '@/lib/blogs';
+import { calculateReadTime } from '@/lib/blogs';
+import { Loader2 } from 'lucide-react';
 
 export default function NewBlogPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [isAuthorized, setIsAuthorized] = useState(false);
   const router = useRouter();
-
-  useEffect(() => {
-    const adminPassword = localStorage.getItem('adminPassword');
-    if (!adminPassword) {
-      router.push('/admin');
-      return;
-    }
-    setIsAuthorized(true);
-  }, [router]);
+  const { isAuthenticated, loading } = useAdminAuth();
 
   const handleSave = async (data: {
     title: string;
@@ -28,7 +21,6 @@ export default function NewBlogPage() {
   }) => {
     setIsLoading(true);
     try {
-      const adminPassword = localStorage.getItem('adminPassword');
       const newBlog = {
         id: Date.now().toString(),
         ...data,
@@ -42,7 +34,6 @@ export default function NewBlogPage() {
       const response = await fetch('/api/blogs', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${adminPassword}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ blogs: updatedBlogs }),
@@ -51,7 +42,6 @@ export default function NewBlogPage() {
       if (!response.ok) throw new Error('Failed to save blog');
 
       router.push('/admin/blogs');
-      router.refresh();
     } catch (error) {
       console.error('Error saving blog:', error);
       alert('Failed to save blog');
@@ -60,12 +50,20 @@ export default function NewBlogPage() {
     }
   };
 
-  if (!isAuthorized) {
-    return <div className="flex items-center justify-center min-h-screen">Checking authorization...</div>;
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return null;
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-background to-primary/5 p-6">
       <div className="max-w-4xl mx-auto">
         <BlogEditor
           onSave={handleSave}

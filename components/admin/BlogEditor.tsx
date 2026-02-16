@@ -55,12 +55,8 @@ export default function BlogEditor({
       const formData = new FormData();
       formData.append('file', file);
 
-      const adminPassword = localStorage.getItem('adminPassword');
       const response = await fetch('/api/upload', {
         method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${adminPassword}`,
-        },
         body: formData,
       });
 
@@ -105,54 +101,55 @@ export default function BlogEditor({
 
   return (
     <div className="space-y-6">
-      <Card className="backdrop-blur-sm bg-white/20 dark:bg-white/5 border-white/30 dark:border-white/10">
+      <Card className="backdrop-blur-sm bg-white/20 dark:bg-white/5 border border-white/30 dark:border-white/10">
         <CardHeader>
-          <CardTitle>Blog Editor</CardTitle>
-          <CardDescription>Create or edit your blog post</CardDescription>
+          <CardTitle className="text-foreground">Blog Editor</CardTitle>
+          <CardDescription className="text-muted-foreground">Create or edit your blog post with a Word-like experience</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium mb-2">Title</label>
+            <label className="block text-sm font-medium text-foreground mb-2">Title</label>
             <Input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter blog title"
-              className="backdrop-blur-sm bg-white/30 dark:bg-white/5 border-white/30"
+              className="backdrop-blur-sm bg-white/30 dark:bg-white/5 border border-white/30 text-foreground"
             />
           </div>
 
           {/* Excerpt */}
           <div>
-            <label className="block text-sm font-medium mb-2">Excerpt</label>
+            <label className="block text-sm font-medium text-foreground mb-2">Excerpt</label>
             <Textarea
               value={excerpt}
               onChange={(e) => setExcerpt(e.target.value)}
               placeholder="Brief summary of your blog post"
-              className="backdrop-blur-sm bg-white/30 dark:bg-white/5 border-white/30 h-20"
+              className="backdrop-blur-sm bg-white/30 dark:bg-white/5 border border-white/30 h-20 text-foreground"
             />
           </div>
 
           {/* Category */}
           <div>
-            <label className="block text-sm font-medium mb-2">Category</label>
+            <label className="block text-sm font-medium text-foreground mb-2">Category</label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-3 py-2 rounded-md backdrop-blur-sm bg-white/30 dark:bg-white/5 border border-white/30 dark:border-white/10"
+              className="w-full px-3 py-2 rounded-md backdrop-blur-sm bg-white/30 dark:bg-white/5 border border-white/30 dark:border-white/10 text-foreground"
             >
               <option>Technology</option>
               <option>Personal</option>
               <option>Networking</option>
               <option>Linux</option>
               <option>Cloud</option>
+              <option>Home Lab</option>
               <option>Other</option>
             </select>
           </div>
 
           {/* Featured Image */}
           <div>
-            <label className="block text-sm font-medium mb-2">Featured Image</label>
+            <label className="block text-sm font-medium text-foreground mb-2">Featured Image</label>
             <div className="flex gap-4">
               <Button
                 onClick={() => fileInputRef.current?.click()}
@@ -189,12 +186,12 @@ export default function BlogEditor({
           {/* Rich Text Editor */}
           <div>
             <div className="flex justify-between items-center mb-2">
-              <label className="block text-sm font-medium">Content</label>
-              <span className="text-xs text-gray-500">
+              <label className="block text-sm font-medium text-foreground">Content</label>
+              <span className="text-xs text-muted-foreground">
                 {content.split(/\s+/).length} words • {readTime} min read
               </span>
             </div>
-            <div className="bg-white dark:bg-slate-900 rounded-lg border border-white/30">
+            <div className="bg-background rounded-lg border border-white/30 dark:border-white/10 prose prose-invert max-w-none">
               <ReactQuill
                 theme="snow"
                 value={content}
