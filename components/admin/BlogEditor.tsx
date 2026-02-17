@@ -15,6 +15,7 @@ interface BlogEditorProps {
     content: string;
     category: string;
     image?: string;
+    publisher?: string;
   };
   onSave: (data: {
     title: string;
@@ -22,6 +23,7 @@ interface BlogEditorProps {
     content: string;
     category: string;
     image?: string;
+    publisher?: string;
   }) => Promise<void>;
   onCancel: () => void;
   isLoading?: boolean;
@@ -37,6 +39,7 @@ export default function BlogEditor({
   const [excerpt, setExcerpt] = useState(initialData?.excerpt || '');
   const [content, setContent] = useState(initialData?.content || '');
   const [category, setCategory] = useState(initialData?.category || 'Technology');
+  const [publisher, setPublisher] = useState(initialData?.publisher || 'Chisomo Misomali');
   const [image, setImage] = useState(initialData?.image || '');
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -83,7 +86,8 @@ export default function BlogEditor({
       excerpt,
       content,
       category,
-      image: image || undefined,
+      image,
+      publisher,
     });
   };
 
@@ -131,8 +135,20 @@ export default function BlogEditor({
               <option>Linux</option>
               <option>Cloud</option>
               <option>Home Lab</option>
+              <option>Infrastructure</option>
               <option>Other</option>
             </select>
+          </div>
+
+          {/* Publisher */}
+          <div>
+            <label className="block text-sm font-medium text-foreground mb-2">Publisher</label>
+            <Input
+              value={publisher}
+              onChange={(e) => setPublisher(e.target.value)}
+              placeholder="Your name or organization"
+              className="backdrop-blur-sm bg-white/30 dark:bg-white/5 border border-white/30 text-foreground"
+            />
           </div>
 
           {/* Featured Image */}

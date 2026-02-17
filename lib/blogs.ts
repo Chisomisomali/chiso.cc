@@ -7,6 +7,7 @@ export interface BlogPost {
   date: string;
   image?: string;
   readTime: number;
+  publisher?: string;
 }
 
 export interface BlogsData {

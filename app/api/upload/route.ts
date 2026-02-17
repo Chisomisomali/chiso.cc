@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { writeFile, mkdir } from 'fs/promises';
+import { join } from 'path';
+import { existsSync } from 'fs';
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,14 +22,30 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'File size exceeds 20MB limit' }, { status: 400 });
     }
 
-    // For Vercel deployment, we'll use a data URL approach
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
-    const base64 = buffer.toString('base64');
-    const dataUrl = `data:${file.type};base64,${base64}`;
+
+    // Generate unique filename with timestamp
+    const timestamp = Date.now();
+    const fileExtension = file.name.split('.').pop() || 'jpg';
+    const fileName = `blog-${timestamp}.${fileExtension}`;
+
+    // Save to public/uploads directory
+    const uploadDir = join(process.cwd(), 'public', 'uploads');
+    
+    // Ensure upload directory exists
+    if (!existsSync(uploadDir)) {
+      await mkdir(uploadDir, { recursive: true });
+    }
+
+    const filePath = join(uploadDir, fileName);
+    await writeFile(filePath, buffer);
+
+    // Return the public URL
+    const publicUrl = `/uploads/${fileName}`;
 
     return NextResponse.json({ 
-      url: dataUrl,
+      url: publicUrl,
       success: true 
     });
   } catch (error) {

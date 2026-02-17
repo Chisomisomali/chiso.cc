@@ -43,17 +43,14 @@ export default function EditBlogPage() {
     content: string;
     category: string;
     image?: string;
+    publisher?: string;
   }) => {
     setIsLoading(true);
     try {
-      console.log("[v0] Updating blog", id, "with data:", data);
-      
       const response = await fetch('/api/blogs');
       const json = await response.json();
       const allBlogs = json.blogs || [];
-      
-      console.log("[v0] Fetched existing blogs, count:", allBlogs.length);
-      
+
       const updatedBlogs = allBlogs.map((blog: BlogPost) =>
         blog.id === id
           ? {
@@ -64,8 +61,6 @@ export default function EditBlogPage() {
           : blog
       );
 
-      console.log("[v0] Updated blogs array, new count:", updatedBlogs.length);
-
       const saveResponse = await fetch('/api/blogs', {
         method: 'POST',
         headers: {
@@ -74,16 +69,12 @@ export default function EditBlogPage() {
         body: JSON.stringify({ blogs: updatedBlogs }),
       });
 
-      console.log("[v0] Save response status:", saveResponse.status);
-
       if (!saveResponse.ok) {
         const errorText = await saveResponse.text();
-        console.error("[v0] Save error response:", errorText);
         throw new Error('Failed to save blog');
       }
 
       const saveResult = await saveResponse.json();
-      console.log("[v0] Save successful:", saveResult);
 
       alert('Blog updated successfully!');
       router.push('/admin/blogs');
