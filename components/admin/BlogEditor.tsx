@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { calculateReadTime } from '@/lib/blogs';
-import { Bold, Italic, List, ListOrdered, Quote, Code, Link as LinkIcon } from 'lucide-react';
+import { TipTapEditor } from './BlogEditorTipTap';
 
 interface BlogEditorProps {
   initialData?: {
@@ -42,30 +42,6 @@ export default function BlogEditor({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const readTime = calculateReadTime(content);
-
-  const insertMarkdown = (before: string, after: string, placeholder: string) => {
-    const textarea = document.querySelector('textarea[placeholder*="Start writing"]') as HTMLTextAreaElement;
-    if (!textarea) return;
-
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-    const selectedText = content.substring(start, end) || placeholder;
-    const newContent = 
-      content.substring(0, start) +
-      before +
-      selectedText +
-      after +
-      content.substring(end);
-
-    setContent(newContent);
-    
-    // Restore cursor position
-    setTimeout(() => {
-      textarea.focus();
-      textarea.selectionStart = start + before.length;
-      textarea.selectionEnd = start + before.length + selectedText.length;
-    }, 0);
-  };
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -197,96 +173,11 @@ export default function BlogEditor({
 
           {/* Rich Text Editor */}
           <div>
-            <div className="flex justify-between items-center mb-2">
-              <label className="block text-sm font-medium text-foreground">Content</label>
-              <span className="text-xs text-muted-foreground">
-                {content.split(/\s+/).length} words • {readTime} min read
-              </span>
+            <label className="block text-sm font-medium text-foreground mb-2">Content</label>
+            <TipTapEditor value={content} onChange={setContent} />
+            <div className="mt-2 text-xs text-muted-foreground">
+              {content.split(/\s+/).filter(w => w.length > 0).length} words • {readTime} min read
             </div>
-            
-            {/* Editor Toolbar */}
-            <div className="flex flex-wrap gap-2 mb-3 p-3 bg-white/10 rounded-t-lg border border-b-0 border-white/30">
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => insertMarkdown('**', '**', 'bold text')}
-                title="Bold"
-              >
-                <Bold className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => insertMarkdown('*', '*', 'italic text')}
-                title="Italic"
-              >
-                <Italic className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => insertMarkdown('~~', '~~', 'strikethrough')}
-                title="Strikethrough"
-              >
-                <span className="line-through">S</span>
-              </Button>
-              <div className="border-l border-white/20" />
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => insertMarkdown('- ', '', 'list item')}
-                title="Bullet list"
-              >
-                <List className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => insertMarkdown('1. ', '', 'list item')}
-                title="Ordered list"
-              >
-                <ListOrdered className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => insertMarkdown('> ', '', 'quoted text')}
-                title="Quote"
-              >
-                <Quote className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => insertMarkdown('```\n', '\n```', 'code')}
-                title="Code block"
-              >
-                <Code className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => insertMarkdown('[', '](url)', 'link text')}
-                title="Link"
-              >
-                <LinkIcon className="w-4 h-4" />
-              </Button>
-            </div>
-
-            {/* Content Textarea */}
-            <div className="bg-background rounded-b-lg border border-white/30">
-              <Textarea
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Start writing your blog post... Use Markdown for formatting."
-                className="backdrop-blur-sm bg-white/5 border-0 text-foreground min-h-64 font-mono text-sm"
-              />
-            </div>
-
-            {/* Markdown Help */}
-            <p className="text-xs text-muted-foreground mt-2">
-              💡 Tip: Use Markdown syntax: **bold**, *italic*, - lists, &gt; quotes, `code`, [link](url)
-            </p>
           </div>
 
           {/* Action Buttons */}
