@@ -14,9 +14,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Only images are allowed' }, { status: 400 });
     }
 
-    // Validate file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      return NextResponse.json({ error: 'File size exceeds 5MB limit' }, { status: 400 });
+    // Validate file size (max 20MB)
+    if (file.size > 20 * 1024 * 1024) {
+      return NextResponse.json({ error: 'File size exceeds 20MB limit' }, { status: 400 });
     }
 
     // For Vercel deployment, we'll use a data URL approach
