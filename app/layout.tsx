@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import Script from "next/script"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
@@ -100,64 +101,68 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Chisomo Misomali",
+    jobTitle: "Fiber Optics & Networking Specialist",
+    description: "Expert in fiber optics, Linux administration, networking, and telecommunications systems",
+    url: "https://chisomo-misomali.vercel.app",
+    email: "cjmisomali@gmail.com",
+    telephone: "+265998335256",
+    knowsAbout: [
+      "Fiber Optics",
+      "Linux Administration",
+      "Network Engineering",
+      "Telecommunications",
+      "System Administration",
+      "Debian Systems",
+      "Proxmox Virtualization",
+      "Ubiquiti Networks",
+      "Motorola Radio Systems",
+      "FTTx Installation",
+      "GIS Applications",
+      "Network Infrastructure",
+      "Data Center Management",
+      "Wireless Networks",
+      "Containerization",
+      "Automation",
+      "Cloud Platforms",
+    ],
+    hasOccupation: {
+      "@type": "Occupation",
+      name: "Network Engineer",
+      occupationLocation: {
+        "@type": "Country",
+        name: "Malawi",
+      },
+      skills: [
+        "Fiber Optic Splicing",
+        "Network Troubleshooting",
+        "Linux System Administration",
+        "Virtualization",
+        "Radio Systems Management",
+        "GIS Applications",
+        "Network Design",
+        "Infrastructure Management",
+      ],
+    },
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Technical Education Background",
+    },
+  }
+
   return (
     <html lang="en">
       <head>
-        <script
+        <Script
+          id="structured-data"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Chisomo Misomali",
-              jobTitle: "Fiber Optics & Networking Specialist",
-              description: "Expert in fiber optics, Linux administration, networking, and telecommunications systems",
-              url: "https://chisomo-misomali.vercel.app",
-              email: "cjmisomali@gmail.com",
-              telephone: "+265998335256",
-              knowsAbout: [
-                "Fiber Optics",
-                "Linux Administration",
-                "Network Engineering",
-                "Telecommunications",
-                "System Administration",
-                "Debian Systems",
-                "Proxmox Virtualization",
-                "Ubiquiti Networks",
-                "Motorola Radio Systems",
-                "FTTx Installation",
-                "GIS Applications",
-                "Network Infrastructure",
-                "Data Center Management",
-                "Wireless Networks",
-                "Containerization",
-                "Automation",
-                "Cloud Platforms",
-              ],
-              hasOccupation: {
-                "@type": "Occupation",
-                name: "Network Engineer",
-                occupationLocation: {
-                  "@type": "Country",
-                  name: "Malawi",
-                },
-                skills: [
-                  "Fiber Optic Splicing",
-                  "Network Troubleshooting",
-                  "Linux System Administration",
-                  "Virtualization",
-                  "Radio Systems Management",
-                  "GIS Applications",
-                  "Network Design",
-                  "Infrastructure Management",
-                ],
-              },
-              alumniOf: {
-                "@type": "EducationalOrganization",
-                name: "Technical Education Background",
-              },
-            }),
+            __html: JSON.stringify(structuredData),
           }}
+          strategy="afterInteractive"
         />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
