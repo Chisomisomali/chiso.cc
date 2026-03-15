@@ -10,10 +10,6 @@ export function Navigation() {
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/skills", label: "Skills" },
-    { href: "/blog", label: "Blog" },
-    { href: "/contact", label: "Contact" },
     { href: "/geek", label: "Geek Mode", className: "font-mono text-purple-600 dark:text-purple-400" },
   ]
 
