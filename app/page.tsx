@@ -176,9 +176,9 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="backdrop-blur-sm bg-white/20 dark:bg-white/5 rounded-3xl border border-white/30 dark:border-white/10 shadow-xl p-8 sm:p-12">
             <div className="text-center max-w-4xl mx-auto">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">Chisomo Misomali</h1>
-              <p className="text-xl sm:text-2xl text-muted-foreground mb-8 text-pretty">Expert in Fiber Optics, Networking & Linux Administration</p>
-              <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto text-pretty">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 text-balance">Chisomo Misomali</h1>
+              <p className="text-lg sm:text-xl text-muted-foreground mb-8 text-pretty">Expert in Fiber Optics, Networking & Linux Administration</p>
+              <p className="text-base text-muted-foreground mb-10 max-w-2xl mx-auto text-pretty">
                 A motivated and versatile professional with a passion for emerging technologies, specializing in optical fiber systems, network infrastructure, and system administration.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -216,7 +216,7 @@ export default function HomePage() {
       {/* About Section */}
       <section id="about" className="py-16 px-4 sm:px-6 lg:px-8 bg-white/5 dark:bg-black/20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-foreground mb-12 text-center">About Me</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">About Me</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="backdrop-blur-sm bg-white/20 dark:bg-white/5 border border-white/30 dark:border-white/10">
               <CardHeader>
@@ -250,7 +250,7 @@ export default function HomePage() {
       {/* Skills Section */}
       <section id="skills" className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Technical Skills</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">Technical Skills</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skillCategories.map((category, index) => (
               <Card key={index} className="backdrop-blur-sm bg-white/20 dark:bg-white/5 border border-white/30 dark:border-white/10">
@@ -278,7 +278,7 @@ export default function HomePage() {
       {/* Achievements Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/5 dark:bg-black/20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Professional Achievements</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">Professional Achievements</h2>
           <div className="grid md:grid-cols-2 gap-4">
             {achievements.map((achievement, index) => (
               <Card key={index} className="backdrop-blur-sm bg-white/20 dark:bg-white/5 border border-white/30 dark:border-white/10">
@@ -295,7 +295,7 @@ export default function HomePage() {
       {/* Blog Preview Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Latest Articles</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">Latest Articles</h2>
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <Card className="backdrop-blur-sm bg-white/20 dark:bg-white/5 border border-white/30 dark:border-white/10 hover:shadow-lg transition-all">
               <CardHeader>
@@ -337,7 +337,7 @@ export default function HomePage() {
       {/* Contact Section */}
       <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 bg-white/5 dark:bg-black/20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-foreground mb-12 text-center">Get In Touch</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">Get In Touch</h2>
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div className="space-y-6">
@@ -428,7 +428,7 @@ export default function HomePage() {
       {/* Geek Mode CTA */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-900/20 via-transparent to-primary/20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-foreground mb-6">Ready for Geek Mode?</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-6">Ready for Geek Mode?</h2>
           <p className="text-lg text-muted-foreground mb-8">Experience your portfolio as an interactive Linux terminal</p>
           <Link href="/geek">
             <Button size="lg" className="bg-gradient-to-r from-purple-600 to-primary hover:from-purple-700 hover:to-primary/90">
