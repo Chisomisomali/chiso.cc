@@ -14,6 +14,7 @@ export function Navigation() {
     { href: "/skills", label: "Skills" },
     { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
+    { href: "/geek", label: "Geek Mode", className: "font-mono text-purple-600 dark:text-purple-400" },
   ]
 
   return (
@@ -30,7 +31,7 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-all duration-200 px-3 py-2 rounded-lg hover:backdrop-blur-sm hover:bg-white/30 dark:hover:bg-white/20"
+                className={`text-sm font-medium transition-colors ${item.className || 'text-foreground hover:text-primary'}`}
               >
                 {item.label}
               </Link>
@@ -49,19 +50,19 @@ export function Navigation() {
         </div>
 
         {/* Mobile Navigation Menu */}
-        {isOpen && (
-          <div className="md:hidden py-4 border-t border-white/30 dark:border-white/20 backdrop-blur-sm bg-white/70 dark:bg-slate-900/70 rounded-b-2xl">
-            <div className="flex flex-col space-y-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="px-4 py-2 text-foreground hover:text-primary hover:backdrop-blur-sm hover:bg-white/40 dark:hover:bg-white/30 rounded-xl transition-all duration-200 mx-2 border border-transparent hover:border-white/30 dark:hover:border-white/20"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+          {isOpen && (
+            <div className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-slate-900 border-b border-white/30 dark:border-white/10 shadow-lg">
+              <div className="flex flex-col space-y-1 p-4">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`text-sm font-medium transition-colors py-2 ${item.className || 'text-foreground hover:text-primary'}`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
             </div>
           </div>
         )}
