@@ -63,11 +63,11 @@ export function TerminalEmulator() {
               <div className="w-3 h-3 rounded-full bg-yellow-500/70 backdrop-blur"></div>
               <div className="w-3 h-3 rounded-full bg-green-500/70 backdrop-blur"></div>
             </div>
-            <span className="text-green-400 font-mono text-sm ml-2 drop-shadow-lg">
-              chisomo@geek-mode ~ 
+            <span className="text-green-400 font-mono text-sm ml-2 drop-shadow-lg font-bold">
+              Glory Terminal
             </span>
           </div>
-          <span className="text-purple-400/70 font-mono text-xs drop-shadow-lg">Garuda Konsole Emulator</span>
+          <span className="text-purple-400/70 font-mono text-xs drop-shadow-lg">Chisomo Misomali Portfolio</span>
         </div>
 
         {/* Terminal Output Area */}
@@ -79,12 +79,12 @@ export function TerminalEmulator() {
           {history.length === 0 && (
             <div className="space-y-2">
               <div className="text-green-400/80 drop-shadow-lg">
-                <p>╭─ Chisomo Misomali Portfolio Terminal ─────────────────────────╮</p>
-                <p>│                                                             │</p>
+                <p>╭─ Glory Terminal - Chisomo Misomali Portfolio ─────────────╮</p>
+                <p>│                                                           │</p>
                 <p>│  Welcome to Geek Mode! Type 'help' for available commands. │</p>
                 <p>│  Explore the portfolio using Linux-like commands.         │</p>
-                <p>│                                                             │</p>
-                <p>╰───────────────────────────────────────────────────────────╯</p>
+                <p>│                                                           │</p>
+                <p>╰─────────────────────────────────────────────────────────╯</p>
               </div>
             </div>
           )}
