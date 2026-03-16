@@ -1,11 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
 import Script from "next/script"
-import { GeistSans } from "geist/font/sans"
+import { Inter } from "next/font/google"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
 export const metadata: Metadata = {
   title: "Chisomo Misomali | Fiber Optics & Networking Specialist",
@@ -165,7 +167,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+      <body className={`font-sans ${inter.variable} ${GeistMono.variable}`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
